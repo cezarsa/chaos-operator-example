@@ -1,0 +1,3 @@
+apiVersion: chaos.gopherconbr.org/v1beta1
+kind: PodChaos
+projectName: chaos

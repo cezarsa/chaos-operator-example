@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chaos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: chaos
+  template:
+    metadata:
+      labels:
+        name: chaos
+    spec:
+      serviceAccountName: chaos
+      containers:
+        - name: chaos
+          image: REPLACE_IMAGE
+          ports:
+          - containerPort: 60000
+            name: metrics
+          command:
+          - chaos
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: OPERATOR_NAME
+              value: "chaos"
