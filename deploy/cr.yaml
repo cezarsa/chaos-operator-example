@@ -1,4 +1,8 @@
 apiVersion: "chaos.gopherconbr.org/v1beta1"
 kind: "PodChaos"
 metadata:
-  name: "example"
+  name: "nginx-chaos"
+spec:
+  selector:
+    app: chaotic
+  frequencySeconds: 10

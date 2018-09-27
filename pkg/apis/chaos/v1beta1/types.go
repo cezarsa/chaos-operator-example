@@ -1,6 +1,8 @@
 package v1beta1
 
 import (
+	"time"
+
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -22,8 +24,9 @@ type PodChaos struct {
 }
 
 type PodChaosSpec struct {
-	// Fill me
+	Selector         map[string]string `json:"selector"`
+	FrequencySeconds int               `json:"frequencySeconds"`
 }
 type PodChaosStatus struct {
-	// Fill me
+	LastRun time.Time `json:"lastRun"`
 }
